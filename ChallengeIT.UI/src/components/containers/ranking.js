@@ -65,7 +65,7 @@ class Ranking extends Component {
 
   async componentDidMount() {
     const ranking = await api.getRanking(this.props.currentCategory.id);
-    this.setState({ ranking: ranking.data});
+    this.setState({ ranking: ranking.data.data});
   }
 }
 

@@ -104,7 +104,7 @@ class Challenges extends Component {
    async componentDidMount() {
      if(!this.props.currentUser) return;
     const users = await api.getUsers();
-    let filtered = users.data.filter(
+    let filtered = users.data.data.filter(
       user => user.id !== this.props.currentUser.id
     );
     this.setState({ users: filtered, filteredUsers: filtered });
