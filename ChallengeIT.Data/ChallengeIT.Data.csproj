@@ -42,9 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Contracts\IFirstSample.cs" />
+    <Compile Include="Contracts\DbConnection.cs" />
+    <Compile Include="Contracts\ICategoryData.cs" />
+    <Compile Include="Contracts\IRankData.cs" />
+    <Compile Include="Contracts\IPlayerData.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\FirstSample.cs" />
+    <Compile Include="Services\CategoryData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
