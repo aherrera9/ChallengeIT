@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ChallengeIT.Api.Models;
+﻿using ChallengeIT.Api.Models;
 using ChallengeIT.Api.Utilities;
-using Microsoft.AspNetCore.Http;
+using ChallengeIT.Services.Contracts;
+using ChallengeIT.Services.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ChallengeIT.Api.Controllers
 {
@@ -13,12 +12,19 @@ namespace ChallengeIT.Api.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+        #region Properties
+
+        private readonly ICategoryService _categoryService;
+
+        #endregion
+        #region Methods
+
         /// <summary>
         /// Get a list of the categories that are available to challenge on
         /// </summary>
         /// <returns>A list of the categories that are available to challenge on</returns>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
             var CategoryList = new List<CategoryGet>()
             {
@@ -28,6 +34,22 @@ namespace ChallengeIT.Api.Controllers
             };
 
             return Ok(ApiHelper.ResponseWrapper(CategoryList));
+
+            var categories = await _categoryService.GetCategories();
+
+            var categoryGets = new List<CategoryGet>();
+            foreach (var category in categories)
+            {
+                categoryGets.Add(new CategoryGet()
+                {
+                    Id = category.Id,
+                    Name = category.Name
+                });
+            }
+
+            return Ok(ApiHelper.ResponseWrapper(categoryGets));
         }
+
+        #endregion
     }
 }

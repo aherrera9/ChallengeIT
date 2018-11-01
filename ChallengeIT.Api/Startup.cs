@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ChallengeIT.Services.Contracts;
+using ChallengeIT.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +27,10 @@ namespace ChallengeIT.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
+            services.AddTransient(typeof(IPlayerService), typeof(PlayerService));
+            services.AddTransient(typeof(IRankService), typeof(RankService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

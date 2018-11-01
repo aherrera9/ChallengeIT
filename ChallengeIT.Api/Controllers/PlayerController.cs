@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ChallengeIT.Api.Models;
 using ChallengeIT.Api.Utilities;
+using ChallengeIT.Services.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,12 +14,19 @@ namespace ChallengeIT.Api.Controllers
     [ApiController]
     public class PlayerController : ControllerBase
     {
+        #region Properties
+
+        private readonly IPlayerService _playerService;
+
+        #endregion
+        #region Methods
+
         /// <summary>
         /// Get a list of the players that are available to challenge
         /// </summary>
         /// <returns>A list of the players that are available to challenge</returns>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
             var playerList = new List<PlayerGet>()
             {
@@ -32,6 +40,22 @@ namespace ChallengeIT.Api.Controllers
             };
 
             return Ok(ApiHelper.ResponseWrapper(playerList));
+
+            var players = await _playerService.GetPlayers();
+
+            var playerGets = new List<PlayerGet>();
+            foreach (var player in players)
+            {
+                playerGets.Add(new PlayerGet()
+                {
+                    Id = player.Id,
+                    Name = player.Name
+                });
+            }
+
+            return Ok(ApiHelper.ResponseWrapper(playerGets));
         }
+
+        #endregion
     }
 }

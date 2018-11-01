@@ -10,7 +10,7 @@ namespace ChallengeIT.Api.Models
         /// <summary>
         /// The rank number for the player
         /// </summary>
-        public int Rank { get; set; }
+        public int Number { get; set; }
 
         /// <summary>
         /// The name of the player
