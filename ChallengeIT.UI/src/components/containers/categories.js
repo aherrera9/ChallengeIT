@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import * as api from "../../apiCaller";
 import { connect } from "react-redux";
 import BottomBar from "../bottomBar";
@@ -55,7 +55,7 @@ class Categories extends Component {
 
   async componentDidMount() {
     const categories = await api.getChallengeCategories();
-    this.setState({ categories: categories.data });
+    this.setState({ categories: categories.data.data });
   }
   goBack() {
     this.setState({ goBack: true });

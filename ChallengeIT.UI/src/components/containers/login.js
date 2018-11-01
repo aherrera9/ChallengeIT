@@ -70,7 +70,7 @@ class Login extends Component {
 
   async componentDidMount() {
     const users = await api.getUsers();
-    this.setState({ users: users.data, filteredUsers: users.data });
+    this.setState({ users: users.data.data, filteredUsers: users.data.data });
   }
 }
 
