@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ChallengeIT.Data.Services
 {
-    internal class CategoryData : ICategoryData
+    internal class RankData : IRankData
     {
-        public List<Category> GetCategories()
+        List<ChallengeResult> IRankData.GetRank(DateTime fromDate, DateTime toDate)
         {
-            List<Category> categories = new List<Category>();
+            List<ChallengeResult> challengeResults = new List<ChallengeResult>();
             DbConnection connection = new DbConnection();
             SqlConnection conn = connection.GetDbConnection();
             conn.Open();
@@ -21,18 +21,18 @@ namespace ChallengeIT.Data.Services
             SqlCommand command;
             SqlDataReader dataReader;
 
-            command = new SqlCommand("GetCategories", conn) { CommandType = System.Data.CommandType.StoredProcedure };
+            command = new SqlCommand("GetDetailsForRanking", conn) { CommandType = System.Data.CommandType.StoredProcedure };
             dataReader = command.ExecuteReader();
 
             while (dataReader.Read())
             {
-                categories.Add(new Category {Id = (int)dataReader.GetValue(0), Description = (string)dataReader.GetValue(1) });                
+                challengeResults.Add(new ChallengeResult { ChallengingPlayerId = (int)dataReader.GetValue(0), OpponentPlayerId = (int)dataReader.GetValue(1), Result = (int)dataReader.GetValue(2) });
             }
-                        
+
             dataReader.Close();
             command.Dispose();
             conn.Close();
-            return categories;
-        }       
+            return challengeResults;
+        }
     }
 }

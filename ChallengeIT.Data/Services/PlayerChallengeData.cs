@@ -1,0 +1,69 @@
+﻿using ChallengeIT.Data.Contracts;
+using ChallengeIT.Data.Models;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ChallengeIT.Data.Services
+{
+    internal class PlayerChallengeData : IPlayerChallengeData
+    {
+        public void CancelChallenge(int challengeId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PlayerChallenge GetChallenge(int challengeId)
+        {            
+            DbConnection connection = new DbConnection();
+            SqlConnection conn = connection.GetDbConnection();
+            conn.Open();
+
+            SqlCommand command;
+            SqlDataReader dataReader;
+
+            command = new SqlCommand("GetChallenge", conn) { CommandType = System.Data.CommandType.StoredProcedure};
+            command.Parameters.Add("@ChallengeId", SqlDbType.Int).Value = challengeId;
+            dataReader = command.ExecuteReader();
+
+            dataReader.Read();            
+            PlayerChallenge challenge = new PlayerChallenge { ChallengingPlayerId = (int)dataReader.GetValue(0), OpponentPlayerId = (int)dataReader.GetValue(1), ChallengeDate = (DateTime)dataReader.GetValue(2), ChallengeStatus = (int)dataReader.GetValue(3)};
+            
+            dataReader.Close();
+            command.Dispose();
+            conn.Close();
+            return challenge;
+        }
+
+        public int NewChallenge(int challengingPlayerId, int opponentPlayerId, int categoryId)
+        {
+            DbConnection connection = new DbConnection();
+            SqlConnection conn = connection.GetDbConnection();
+            conn.Open();
+            int challengeId;
+            using (SqlCommand command = new SqlCommand("CreateNewChallenge", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+            {
+                SqlDataReader dataReader;
+
+                command.Parameters.Add("@ChallengingPlayerId", SqlDbType.Int).Value = challengingPlayerId;
+                command.Parameters.Add("@OpponentPlayerId", SqlDbType.Int).Value = opponentPlayerId;
+                command.Parameters.Add("@CategoryId", SqlDbType.Int).Value = categoryId;
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                challengeId = (int)dataReader.GetValue(0);
+                dataReader.Close();
+            }
+            conn.Close();
+            return challengeId;
+        }
+
+        public void UpdateChallenge(int challengeId, int challengeResponse)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
