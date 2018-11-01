@@ -1,7 +1,7 @@
 import {SET_CURRENT_CATEGORY} from '../actions/actionTypes';
 
 const initialState = {
-  category: null
+  value: null
 };
 
 export default function categoriesReducer(state = initialState, action) {

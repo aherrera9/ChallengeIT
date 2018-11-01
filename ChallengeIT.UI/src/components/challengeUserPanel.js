@@ -15,7 +15,7 @@ class ChallengeUserPanel extends Component {
     if(!this.props.currentUser){
       return <Redirect to="/" />
     }
-    if(!this.state.redirect){
+    if(this.state.redirect){
       return <Redirect to="/wait" />
     }
     return (

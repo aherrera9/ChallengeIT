@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import * as api from "../../apiCaller";
 import { connect } from "react-redux";
 import BottomBar from "../bottomBar";

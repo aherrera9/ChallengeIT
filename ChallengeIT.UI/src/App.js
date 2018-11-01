@@ -5,6 +5,7 @@ import Categories from './components/containers/categories';
 import Challenges from './components/containers/challenges';
 import login from './components/containers/login';
 import WaitScreen from './components/containers/waitScreen';
+import Ranking from './components/containers/ranking';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/categories" component={Categories} />
             <Route path="/challenges" component={Challenges} />
             <Route path="/wait" component={WaitScreen} />
+            <Route path="/ranking" component={Ranking} />
           </div>
         </div>
       </Router>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../../apiCaller';
 import ChallengeUserPanel from '../challengeUserPanel';
 import BottomBar from '../bottomBar';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as userActions from '../../actions/userActionCreator';
 
@@ -49,6 +49,16 @@ class Challenges extends Component {
         </ul>
         <BottomBar>
           <div className="row">
+          <div className="col-6">
+          <Link to="/ranking">
+                <button
+                  className="btn btn-primary button-main"
+                  onClick={this.goBack.bind(this)}
+                >
+                  Ranking
+                </button>
+              </Link>
+            </div>
             <div className="col-6">
               <button className="btn btn-secondary button-secondary" onClick={this.goBack.bind(this)}>
                 Go Back
