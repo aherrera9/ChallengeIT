@@ -7,7 +7,7 @@ using ChallengeIT.Api.Utilities;
 using ChallengeIT.Services.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static ChallengeIT.Api.Utilities.Enums;
+using static ChallengeIT.Services.Utilities.Enums;
 
 namespace ChallengeIT.Api.Controllers
 {
@@ -41,7 +41,7 @@ namespace ChallengeIT.Api.Controllers
 
             return Ok(ApiHelper.ResponseWrapper(playerList));
 
-            var ranks = await _rankService.GetRanks();
+            var ranks = await _rankService.GetRanks(rankDateRange);
 
             var rankGets = new List<RankGet>();
             foreach (var rank in ranks)

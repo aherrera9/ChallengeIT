@@ -1,15 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using ChallengeIT.Api.Utilities;
+using ChallengeIT.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using ChallengeIT.Services.Utilities;
 
 namespace ChallengeIT.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/{0}/")]
     [ApiController]
     public class ChallengeController : ControllerBase
     {
+        #region Properties
+
+        private readonly IChallengeService _challengeService;
+
+        #endregion
+        #region Methods
+
+        [HttpGet]
+        [Route("IsChallengeAccepted")]
+        public async Task<IActionResult> IsChallengeAccepted()
+        {
+            return Ok(ApiHelper.ResponseWrapper(Enums.ChallengeStatus.Waiting));
+        }
+
+        [HttpPost]
+        [Route("SetChallengeResult")]
+        public async Task<IActionResult> SetChallengeResult([FromBody]int result)
+        {
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("ActionChallenge")]
+        public async Task<IActionResult> ActionChallenge([FromBody]int action)
+        {
+            return Ok();
+        }
+
+        #endregion
     }
 }

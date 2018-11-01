@@ -1,10 +1,12 @@
 ﻿using ChallengeIT.Data.Contracts;
 using ChallengeIT.Services.Contracts;
+using ChallengeIT.Services.Extensions;
 using ChallengeIT.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using static ChallengeIT.Services.Utilities.Enums;
 
 namespace ChallengeIT.Services.Services
 {
@@ -36,12 +38,21 @@ namespace ChallengeIT.Services.Services
         /// Get a list of players from the data store
         /// </summary>
         /// <returns>A list of players</returns>
-        public async Task<IEnumerable<Rank>> GetRanks()
+        public async Task<IEnumerable<Rank>> GetRanks(RankDateRange rankDateRange)
+        {
+            var ranks = await this.GetRanksFromDatabase(rankDateRange);
+            return ranks;
+        }
+
+        private async Task<IEnumerable<Rank>> GetRanksFromDatabase(RankDateRange rankDateRange)
         {
             List<Rank> ranks = new List<Rank>();
 
+            DateTime startDate = this.GetStartDateOfRange(rankDateRange);
+            DateTime endDate = this.GetEndDateOfRange(rankDateRange);
+
             // get the data from the data store
-            var ranksData = Task.Run(() => _RankData.GetRank(DateTime.Now, DateTime.Now))
+            var ranksData = Task.Run(() => _RankData.GetRank(startDate, endDate))
                 .GetAwaiter()
                 .GetResult();
 
@@ -58,6 +69,40 @@ namespace ChallengeIT.Services.Services
             }
 
             return ranks;
+        }
+
+        private DateTime GetStartDateOfRange(RankDateRange rankDateRange)
+        {
+            DateTime date = DateTime.Now;
+            switch (rankDateRange)
+            {
+                case RankDateRange.Week:
+                    return date.FirstDayOfWeek();
+                case RankDateRange.Month:
+                    return date.FirstDayOfMonth();
+                default:
+                    return date.Date;
+            }
+        }
+
+        private DateTime GetEndDateOfRange(RankDateRange rankDateRange)
+        {
+            DateTime date = DateTime.Now;
+            DateTime returnDate = DateTime.Now;
+            switch (rankDateRange)
+            {
+                case RankDateRange.Week:
+                    returnDate = date.LastDayOfWeek();
+                    break;
+                case RankDateRange.Month:
+                    returnDate = date.LastDayOfMonth();
+                    break;
+                default:
+                    returnDate = date.Date.AddHours(24);
+                    break;
+            }
+
+            return returnDate.AddMilliseconds(-1);
         }
 
         #endregion
