@@ -21,6 +21,18 @@ namespace ChallengeIT.Api.Controllers
         private readonly IPlayerService _playerService;
 
         #endregion
+        #region Controller
+
+        /// <summary>
+        /// The controller for the class
+        /// </summary>
+        public PlayerController(IPlayerService playerService)
+        {
+            _playerService = playerService;
+        }
+
+
+        #endregion
         #region Methods
 
         /// <summary>
@@ -30,19 +42,6 @@ namespace ChallengeIT.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var playerList = new List<PlayerGet>()
-            {
-                new PlayerGet() { Id = 1, Name = "Antonio" },
-                new PlayerGet() { Id = 2, Name = "Josh" },
-                new PlayerGet() { Id = 3, Name = "Hannes" },
-                new PlayerGet() { Id = 4, Name = "Imtiaz" },
-                new PlayerGet() { Id = 5, Name = "Nadav" },
-                new PlayerGet() { Id = 6, Name = "Esteban" },
-                new PlayerGet() { Id = 7, Name = "Rocco" }
-            };
-
-            return Ok(ApiHelper.ResponseWrapper(playerList));
-
             var players = await _playerService.GetPlayers();
 
             var playerGets = new List<PlayerGet>();

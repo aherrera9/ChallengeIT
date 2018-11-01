@@ -67,14 +67,16 @@ namespace ChallengeIT.Services.Services
             }
 
             // work out the ranking for each participant
+            ranks = this.RankTheChallenges(ranks);
 
             return ranks;
         }
 
-        //private List<Rank> RankTheChallenges(List<Rank> ranks)
-        //{
-            
-        //}
+        private List<Rank> RankTheChallenges(List<Rank> ranks)
+        {
+
+            return ranks;
+        }
 
         private DateTime GetStartDateOfRange(RankDateRange rankDateRange)
         {

@@ -19,6 +19,18 @@ namespace ChallengeIT.Api.Controllers
         private readonly ICategoryService _categoryService;
 
         #endregion
+        #region Controller
+
+        /// <summary>
+        /// The controller for the class
+        /// </summary>
+        public CategoryController(ICategoryService categoryService)
+        {
+            _categoryService = categoryService;
+        }
+
+
+        #endregion
         #region Methods
 
         /// <summary>
@@ -28,15 +40,6 @@ namespace ChallengeIT.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var CategoryList = new List<CategoryGet>()
-            {
-                new CategoryGet() { Id = 1, Name = "Table Tennis" },
-                new CategoryGet() { Id = 2, Name = "Pool" },
-                new CategoryGet() { Id = 3, Name = "Daytona" }
-            };
-
-            return Ok(ApiHelper.ResponseWrapper(CategoryList));
-
             var categories = await _categoryService.GetCategories();
 
             var categoryGets = new List<CategoryGet>();

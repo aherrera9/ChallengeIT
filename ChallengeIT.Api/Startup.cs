@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ChallengeIT.Data.Contracts;
+using ChallengeIT.Data.Models;
+using ChallengeIT.Data.Services;
 using ChallengeIT.Services.Contracts;
 using ChallengeIT.Services.Services;
 using Microsoft.AspNetCore.Builder;
@@ -36,7 +39,9 @@ namespace ChallengeIT.Api
 
 
             services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
+            services.AddTransient(typeof(ICategoryData), typeof(CategoryData));
             services.AddTransient(typeof(IPlayerService), typeof(PlayerService));
+            services.AddTransient(typeof(IPlayerData), typeof(PlayerData));
             services.AddTransient(typeof(IRankService), typeof(RankService));
             services.AddTransient(typeof(IChallengeService), typeof(ChallengeService));
         }

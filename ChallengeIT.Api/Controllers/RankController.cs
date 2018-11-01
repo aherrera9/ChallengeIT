@@ -30,19 +30,6 @@ namespace ChallengeIT.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(int categoryId, RankDateRange rankDateRange)
         {
-            var playerList = new List<RankGet>()
-            {
-                new RankGet() { Number = 1, Name = "Antonio", Wins = 7, Losses = 1 },
-                new RankGet() { Number = 2, Name = "Josh", Wins = 6, Losses = 2 },
-                new RankGet() { Number = 3, Name = "Hannes", Wins = 5, Losses = 3 },
-                new RankGet() { Number = 4, Name = "Imtiaz", Wins = 4, Losses = 4 },
-                new RankGet() { Number = 5, Name = "Nadav", Wins = 3, Losses = 5 },
-                new RankGet() { Number = 6, Name = "Esteban", Wins = 2, Losses = 6 },
-                new RankGet() { Number = 7, Name = "Rocco", Wins = 1, Losses = 7 }
-            };
-
-            return Ok(ApiHelper.ResponseWrapper(playerList));
-
             var ranks = await _rankService.GetRanks(rankDateRange);
 
             var rankGets = new List<RankGet>();
