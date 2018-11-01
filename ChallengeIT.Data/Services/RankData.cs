@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeIT.Data.Services
 {
-    internal class RankData : IRankData
+    public class RankData : IRankData
     {
         public List<ChallengeResult> GetRank(DateTime fromDate, DateTime toDate)
         {

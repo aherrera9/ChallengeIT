@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeIT.Data.Services
 {
-    internal class PlayerData : IPlayerData
+    public class PlayerData : IPlayerData
     {
         public Player GetPlayerById(int playerId)
         {            
