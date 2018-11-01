@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "ChallengeIT.Services/1.0.0": {
+        "dependencies": {
+          "ChallengeIT.Data": "1.0.0"
+        },
+        "runtime": {
+          "ChallengeIT.Services.dll": {}
+        }
+      },
+      "ChallengeIT.Data/1.0.0": {
+        "runtime": {
+          "ChallengeIT.Data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ChallengeIT.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ChallengeIT.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
