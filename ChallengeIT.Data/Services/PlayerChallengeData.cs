@@ -14,37 +14,48 @@ namespace ChallengeIT.Data.Services
     {
         public void CancelChallenge(int challengeId)
         {
-            throw new NotImplementedException();
+            DbConnection connection = new DbConnection();
+            //using (SqlConnection conn = connection.GetDbConnection())
+            SqlConnection conn = connection.GetDbConnection();
+            conn.Open();
+            using (SqlCommand command = new SqlCommand("CancelChallenge", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+            {
+                command.Parameters.Add("@ChallengeId", SqlDbType.Int).Value = challengeId;
+                int noOfRowsAffected = command.ExecuteNonQuery();
+            }
+            conn.Close();
+            conn.Dispose();
         }
 
         public PlayerChallenge GetChallenge(int challengeId)
         {            
             DbConnection connection = new DbConnection();
+            PlayerChallenge challenge;
+            //using (SqlConnection conn = connection.GetDbConnection())
             SqlConnection conn = connection.GetDbConnection();
             conn.Open();
-
-            SqlCommand command;
-            SqlDataReader dataReader;
-
-            command = new SqlCommand("GetChallenge", conn) { CommandType = System.Data.CommandType.StoredProcedure};
-            command.Parameters.Add("@ChallengeId", SqlDbType.Int).Value = challengeId;
-            dataReader = command.ExecuteReader();
-
-            dataReader.Read();            
-            PlayerChallenge challenge = new PlayerChallenge { ChallengingPlayerId = (int)dataReader.GetValue(0), OpponentPlayerId = (int)dataReader.GetValue(1), ChallengeDate = (DateTime)dataReader.GetValue(2), ChallengeStatus = (int)dataReader.GetValue(3)};
-            
-            dataReader.Close();
-            command.Dispose();
+            using (SqlCommand command = new SqlCommand("GetChallenge", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+            {
+                SqlDataReader dataReader;
+                command.Parameters.Add("@ChallengeId", SqlDbType.Int).Value = challengeId;
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                challenge = new PlayerChallenge { ChallengingPlayerId = (int)dataReader.GetValue(0), OpponentPlayerId = (int)dataReader.GetValue(1), ChallengeDate = (DateTime)dataReader.GetValue(2), ChallengeStatus = (int)dataReader.GetValue(3) };
+                dataReader.Close();
+            }
             conn.Close();
+            conn.Dispose();
             return challenge;
         }
 
         public int NewChallenge(int challengingPlayerId, int opponentPlayerId, int categoryId)
         {
             DbConnection connection = new DbConnection();
+            int challengeId;
+
+            //using (SqlConnection conn = connection.GetDbConnection())
             SqlConnection conn = connection.GetDbConnection();
             conn.Open();
-            int challengeId;
             using (SqlCommand command = new SqlCommand("CreateNewChallenge", conn) { CommandType = System.Data.CommandType.StoredProcedure })
             {
                 SqlDataReader dataReader;
@@ -58,12 +69,24 @@ namespace ChallengeIT.Data.Services
                 dataReader.Close();
             }
             conn.Close();
+            conn.Dispose();
             return challengeId;
         }
 
         public void UpdateChallenge(int challengeId, int challengeResponse)
         {
-            throw new NotImplementedException();
+            DbConnection connection = new DbConnection();
+            //using (SqlConnection conn = connection.GetDbConnection())
+            SqlConnection conn = connection.GetDbConnection();
+            conn.Open();
+            using (SqlCommand command = new SqlCommand("UpdateChallenge", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+            {
+                command.Parameters.Add("@ChallengeId", SqlDbType.Int).Value = challengeId;
+                command.Parameters.Add("@Response", SqlDbType.Int).Value = challengeResponse;
+                int noOfRowsAffected = command.ExecuteNonQuery();
+            }
+            conn.Close();
+            conn.Dispose();
         }
     }
 }

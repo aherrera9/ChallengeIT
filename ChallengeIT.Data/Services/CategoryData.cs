@@ -15,23 +15,21 @@ namespace ChallengeIT.Data.Services
         {
             List<Category> categories = new List<Category>();
             DbConnection connection = new DbConnection();
+            //using (SqlConnection conn = connection.GetDbConnection())
             SqlConnection conn = connection.GetDbConnection();
             conn.Open();
-
-            SqlCommand command;
-            SqlDataReader dataReader;
-
-            command = new SqlCommand("GetCategories", conn) { CommandType = System.Data.CommandType.StoredProcedure };
-            dataReader = command.ExecuteReader();
-
-            while (dataReader.Read())
+            using (SqlCommand command = new SqlCommand("GetCategories", conn) { CommandType = System.Data.CommandType.StoredProcedure })
             {
-                categories.Add(new Category {Id = (int)dataReader.GetValue(0), Description = (string)dataReader.GetValue(1) });                
+                SqlDataReader dataReader;
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    categories.Add(new Category { Id = (int)dataReader.GetValue(0), Description = (string)dataReader.GetValue(1) });
+                }
+                dataReader.Close();
             }
-                        
-            dataReader.Close();
-            command.Dispose();
             conn.Close();
+            conn.Dispose();
             return categories;
         }       
     }
