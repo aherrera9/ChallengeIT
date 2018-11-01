@@ -1,0 +1,6 @@
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Data\bin\Debug\ChallengeIT.Data.dll
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Data\bin\Debug\ChallengeIT.Data.pdb
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Data\obj\Debug\ChallengeIT.Data.csprojAssemblyReference.cache
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Data\obj\Debug\ChallengeIT.Data.csproj.CoreCompileInputs.cache
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Data\obj\Debug\ChallengeIT.Data.dll
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Data\obj\Debug\ChallengeIT.Data.pdb

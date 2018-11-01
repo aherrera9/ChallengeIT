@@ -1,0 +1,9 @@
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Services\bin\Debug\ChallengeIT.Services.dll
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Services\bin\Debug\ChallengeIT.Services.pdb
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Services\bin\Debug\ChallengeIT.Data.dll
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Services\bin\Debug\ChallengeIT.Data.pdb
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Services\obj\Debug\ChallengeIT.Services.csprojAssemblyReference.cache
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Services\obj\Debug\ChallengeIT.Services.csproj.CoreCompileInputs.cache
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Services\obj\Debug\ChallengeIT.Services.csproj.CopyComplete
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Services\obj\Debug\ChallengeIT.Services.dll
+C:\Dev\ChallengeIT\ChallengeIT\ChallengeIT.Services\obj\Debug\ChallengeIT.Services.pdb
