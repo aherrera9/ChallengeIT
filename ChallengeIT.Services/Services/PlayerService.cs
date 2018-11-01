@@ -41,9 +41,7 @@ namespace ChallengeIT.Services.Services
             List<Player> players = new List<Player>();
 
             // get the data from the data store
-            var playersDate = Task.Run(() => _PlayerData.GetPlayers())
-                .GetAwaiter()
-                .GetResult();
+            var playersDate = await Task.Run(() => _PlayerData.GetPlayers());
 
             // convert the data to a service type variable
             foreach (var playerDate in playersDate)

@@ -26,5 +26,16 @@ namespace ChallengeIT.Services.Models
         /// The number of losses the player has
         /// </summary>
         public int Losses { get; set; }
+
+        /// <summary>
+        /// The win ratio for the rank
+        /// </summary>
+        public double WinRatio
+        {
+            get
+            {
+                return (double)(Wins / (Wins + Losses));
+            }
+        }
     }
 }

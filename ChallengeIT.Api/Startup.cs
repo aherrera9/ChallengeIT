@@ -26,7 +26,14 @@ namespace ChallengeIT.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options
+                .AddPolicy("AllowAll", 
+                    p => p.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
 
             services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
             services.AddTransient(typeof(IPlayerService), typeof(PlayerService));
@@ -41,6 +48,8 @@ namespace ChallengeIT.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("AllowAll");
 
             app.UseMvc();
         }

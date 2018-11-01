@@ -52,9 +52,7 @@ namespace ChallengeIT.Services.Services
             DateTime endDate = this.GetEndDateOfRange(rankDateRange);
 
             // get the data from the data store
-            var ranksData = Task.Run(() => _RankData.GetRank(startDate, endDate))
-                .GetAwaiter()
-                .GetResult();
+            var ranksData = await Task.Run(() => _RankData.GetRank(startDate, endDate));
 
             // convert the data to a service type variable
             foreach (var rankData in ranksData)
@@ -68,8 +66,15 @@ namespace ChallengeIT.Services.Services
                 });
             }
 
+            // work out the ranking for each participant
+
             return ranks;
         }
+
+        //private List<Rank> RankTheChallenges(List<Rank> ranks)
+        //{
+            
+        //}
 
         private DateTime GetStartDateOfRange(RankDateRange rankDateRange)
         {

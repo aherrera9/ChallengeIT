@@ -3,9 +3,11 @@ using ChallengeIT.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using ChallengeIT.Services.Utilities;
+using Microsoft.AspNetCore.Cors;
 
 namespace ChallengeIT.Api.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]/{0}/")]
     [ApiController]
     public class ChallengeController : ControllerBase

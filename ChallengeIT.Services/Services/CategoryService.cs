@@ -41,9 +41,7 @@ namespace ChallengeIT.Services.Services
             List<Category> categories = new List<Category>();
 
             // get the data from the data store
-            var categoriesDate = Task.Run(() => _CategoryData.GetCategories())
-                .GetAwaiter()
-                .GetResult();
+            var categoriesDate = await Task.Run(() => _CategoryData.GetCategories());
 
             // convert the data to a service type variable
             foreach(var categoryData in categoriesDate)

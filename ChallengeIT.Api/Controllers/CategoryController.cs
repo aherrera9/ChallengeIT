@@ -2,12 +2,14 @@
 using ChallengeIT.Api.Utilities;
 using ChallengeIT.Services.Contracts;
 using ChallengeIT.Services.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ChallengeIT.Api.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase

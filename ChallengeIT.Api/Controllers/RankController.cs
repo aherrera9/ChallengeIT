@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using ChallengeIT.Api.Models;
 using ChallengeIT.Api.Utilities;
 using ChallengeIT.Services.Contracts;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static ChallengeIT.Services.Utilities.Enums;
 
 namespace ChallengeIT.Api.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     public class RankController : ControllerBase
