@@ -1,0 +1,98 @@
+html{
+  height: 100%;
+}
+body{
+  background-color: #282c34;
+  color: white;
+  height: 100%;
+}
+
+header{
+  width: 100%;
+  padding: .8em;
+  text-align: center;
+  color: orangered;
+  background-color: #3c3f46;
+}
+
+.content{
+  margin-top: .5em;
+  height: 100%;
+}
+.App{
+  height: 100%;
+}
+
+.appName{
+  font-size: 2em;
+}
+
+.coolList{
+  padding: 0;
+}
+
+.coolList li{
+  text-align: center;
+  padding: 1em;
+  color: yellow;
+  border: 1px solid gray;
+  list-style: none;
+  width: 100%;
+  margin-top: .5em;
+  font-size: 25px;
+}
+.userInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 1px gray;
+  color: white;
+  width: 100%;
+  padding: 0 0em 0.2em .1em;
+  font-size: 17px;
+}
+
+.userInput:focus {
+  outline: none;
+}
+
+.bottomBar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1em 1em;
+  background-color: #282c34;
+}
+
+h1{
+  font-size: 17px;
+  text-align: center;
+}
+
+h2{
+  font-size: 15px;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.button-main {
+  width: 100%;
+  background-color: orangered;
+  color: black;
+  border-radius: 0px;
+  border: 2px solid orangered;
+}
+.button-secondary {
+  width: 100%;
+  background-color: transparent;
+  color: orangered;
+  border-radius: 0px;
+  border: 2px solid;
+  font-weight: 600;
+}
+
+.challengeUserName {
+  font-size: 35px;
+  color: orangered;
+  padding: 1em;
+}

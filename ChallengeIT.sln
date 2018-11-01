@@ -7,7 +7,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeIT.Data", "Challen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeIT.Api", "ChallengeIT.Api\ChallengeIT.Api.csproj", "{9ECA7418-D756-4AA9-ADF1-CA2C9EFDEEEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeIT.Services", "ChallengeIT.Services\ChallengeIT.Services.csproj", "{5A41E22D-F1EE-4038-8A2A-85C2F181907E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeIT.Services", "ChallengeIT.Services\ChallengeIT.Services.csproj", "{5A41E22D-F1EE-4038-8A2A-85C2F181907E}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ChallengeIT.UI", "ChallengeIT.UI\", "{CAB52E8D-DE6C-43D0-9D30-F2ED9F2D4990}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62150"
+		Debug.AspNetCompiler.PhysicalPath = "ChallengeIT.UI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62150\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62150"
+		Release.AspNetCompiler.PhysicalPath = "ChallengeIT.UI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62150\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62150"
+		SlnRelativePath = "ChallengeIT.UI\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +48,10 @@ Global
 		{5A41E22D-F1EE-4038-8A2A-85C2F181907E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A41E22D-F1EE-4038-8A2A-85C2F181907E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A41E22D-F1EE-4038-8A2A-85C2F181907E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB52E8D-DE6C-43D0-9D30-F2ED9F2D4990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB52E8D-DE6C-43D0-9D30-F2ED9F2D4990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB52E8D-DE6C-43D0-9D30-F2ED9F2D4990}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB52E8D-DE6C-43D0-9D30-F2ED9F2D4990}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

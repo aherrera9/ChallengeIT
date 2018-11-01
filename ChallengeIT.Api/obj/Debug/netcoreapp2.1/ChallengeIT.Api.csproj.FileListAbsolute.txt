@@ -17,3 +17,5 @@ C:\Dev\ChallengeIT\ChallengeIT.Api\obj\Debug\netcoreapp2.1\ChallengeIT.Api.Razor
 C:\Dev\ChallengeIT\ChallengeIT.Api\obj\Debug\netcoreapp2.1\ChallengeIT.Api.csproj.CopyComplete
 C:\Dev\ChallengeIT\ChallengeIT.Api\obj\Debug\netcoreapp2.1\ChallengeIT.Api.dll
 C:\Dev\ChallengeIT\ChallengeIT.Api\obj\Debug\netcoreapp2.1\ChallengeIT.Api.pdb
+C:\Dev\hackaton\ChallengeIT\ChallengeIT.Api\obj\Debug\netcoreapp2.1\ChallengeIT.Api.dll
+C:\Dev\hackaton\ChallengeIT\ChallengeIT.Api\obj\Debug\netcoreapp2.1\ChallengeIT.Api.pdb

@@ -696,23 +696,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rocco.smit\\.nuget\\packages\\": {},
+    "C:\\Users\\antonio.herrera\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\ChallengeIT\\ChallengeIT.Services\\ChallengeIT.Services.csproj",
+      "projectUniqueName": "C:\\Dev\\hackaton\\ChallengeIT\\ChallengeIT.Services\\ChallengeIT.Services.csproj",
       "projectName": "ChallengeIT.Services",
-      "projectPath": "C:\\Dev\\ChallengeIT\\ChallengeIT.Services\\ChallengeIT.Services.csproj",
-      "packagesPath": "C:\\Users\\rocco.smit\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\ChallengeIT\\ChallengeIT.Services\\obj\\",
+      "projectPath": "C:\\Dev\\hackaton\\ChallengeIT\\ChallengeIT.Services\\ChallengeIT.Services.csproj",
+      "packagesPath": "C:\\Users\\antonio.herrera\\.nuget\\packages\\",
+      "outputPath": "C:\\Dev\\hackaton\\ChallengeIT\\ChallengeIT.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\rocco.smit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\antonio.herrera\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -726,8 +726,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Dev\\ChallengeIT\\ChallengeIT.Data\\ChallengeIT.Data.csproj": {
-              "projectPath": "C:\\Dev\\ChallengeIT\\ChallengeIT.Data\\ChallengeIT.Data.csproj"
+            "C:\\Dev\\hackaton\\ChallengeIT\\ChallengeIT.Data\\ChallengeIT.Data.csproj": {
+              "projectPath": "C:\\Dev\\hackaton\\ChallengeIT\\ChallengeIT.Data\\ChallengeIT.Data.csproj"
             }
           }
         }
