@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeIT.Data.Services
 {
-    internal class PlayerChallengeData : IPlayerChallengeData
+    public class PlayerChallengeData : IPlayerChallengeData
     {
         public void CancelChallenge(int challengeId)
         {

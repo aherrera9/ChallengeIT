@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeIT.Data.Services
 {
-    internal class CategoryData : ICategoryData
+    public class CategoryData : ICategoryData
     {
         public List<Category> GetCategories()
         {
