@@ -10,5 +10,6 @@ namespace ChallengeIT.Data.Contracts
     public interface IPlayerData
     {
         List<Player> GetPlayers();
+        Player GetPlayerById(int playerId);
     }
 }

@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import * as api from '../../apiCaller';
-import ChallengeUserPanel from '../challengeUserPanel';
-import BottomBar from '../bottomBar';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import * as api from "../../apiCaller";
+import ChallengeUserPanel from "../challengeUserPanel";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import * as userActions from "../../actions/userActionCreator";
 
-class Challenge extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     const { categoryId } = this.props.match.params;
@@ -15,8 +16,8 @@ class Challenge extends Component {
     const user = this.state.selectedUser;
     return (
       <div className="col-12">
-        {this.state.goingBack && <Redirect to='/'/>}
-        {!user && this.renderUsersList()}
+        {this.state.redirect && <Redirect to="/categories" />}
+        {this.renderUsersList()}
         {user && (
           <ChallengeUserPanel
             {...user}
@@ -30,7 +31,7 @@ class Challenge extends Component {
   renderUsersList() {
     return (
       <React.Fragment>
-        <h1>Who do you want to challenge?</h1>
+        <h1>Please identify yourself:</h1>
         <input
           type="text"
           className="userInput"
@@ -39,43 +40,24 @@ class Challenge extends Component {
         />
         <ul className="coolList">
           {this.state.filteredUsers.map(user => (
-            <li key={user.id} onClick={this.selectUser.bind(this, user.id)}>
-              {user.name}
-            </li>
+              <li key={Math.random()} onClick={this.selectUser.bind(this, user)}>
+                {user.name}
+              </li>
           ))}
           {this.state.filteredUsers.length === 0 && <h2>No users found :-(</h2>}
         </ul>
-        <BottomBar>
-          <div className="row">
-            <div className="col-6">
-              <button className="btn btn-secondary button-secondary" onClick={this.goBack.bind(this)}>
-                Go Back
-              </button>
-            </div>
-          </div>
-        </BottomBar>
       </React.Fragment>
     );
   }
 
-  goBack() {
-    this.setState({goingBack: true})
-  }
-
-  removeSelectedUser() {
-    this.setState({ selectedUser: null });
-  }
-
-  selectUser(userId) {
-    let user = this.state.users.find(user => user.id === userId);
-    this.setState({
-      selectedUser: this.state.users.find(user => user.id === userId)
-    });
+  selectUser(user) {
+    this.props.setCurrentUser(user);
+    this.setState({redirect: true});
   }
 
   handleUserInput(e) {
     let usersCopy = Object.assign([], this.state.users);
-    if (e.target.value !== '') {
+    if (e.target.value !== "") {
       let filtered = usersCopy.filter(
         user =>
           user.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
@@ -92,4 +74,15 @@ class Challenge extends Component {
   }
 }
 
-export default Challenge;
+const mapStateToProps = (state) => ({
+  currentUser: state.users.currentUser
+});
+
+const mapDispatchToProps = {
+  setCurrentUser: userActions.setCurrentUser
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

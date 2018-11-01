@@ -11,13 +11,14 @@ header{
   width: 100%;
   padding: .8em;
   text-align: center;
-  color: orangered;
-  background-color: #3c3f46;
+  color: #f9ff1a;
+  background-color: #2d323c;
 }
 
 .content{
   margin-top: .5em;
   height: 100%;
+  overflow: scroll;
 }
 .App{
   height: 100%;
@@ -25,6 +26,7 @@ header{
 
 .appName{
   font-size: 2em;
+  font-family: 'Baloo Thambi', cursive;
 }
 
 .coolList{
@@ -62,6 +64,7 @@ header{
   width: 100%;
   padding: 1em 1em;
   background-color: #282c34;
+  box-shadow: -5px 1px 13px #5d5858;
 }
 
 h1{
@@ -70,29 +73,55 @@ h1{
 }
 
 h2{
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
   margin-top: 1em;
 }
 
 .button-main {
   width: 100%;
-  background-color: orangered;
+  background-color: #f9ff1a;
   color: black;
   border-radius: 0px;
-  border: 2px solid orangered;
+  border: 2px solid #f9ff1a;
 }
+.button-main:hover{
+  background-color: #f9ff1a;
+  color: black;
+}
+.userWating{
+  color: #f9ff1a;
+}
+
 .button-secondary {
   width: 100%;
   background-color: transparent;
-  color: orangered;
+  color: #f9ff1a;
   border-radius: 0px;
   border: 2px solid;
   font-weight: 600;
 }
 
+.highlight{
+  color: #f9ff1a;
+}
+
+.waitingImg{
+  width: 100%;
+  margin: 3em 0;
+}
+
 .challengeUserName {
   font-size: 35px;
-  color: orangered;
+  color: #f9ff1a;
   padding: 1em;
 }
+.categoriesUserName{
+  color: #f9ff1a;
+}
+
+.headerLogo{
+  transform: scale(0.16749);
+  width: 100%;
+}
+

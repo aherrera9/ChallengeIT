@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChallengeIT.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace ChallengeIT.Data.Contracts
 {
     public interface IRankData
     {
-        List<string> GetRank(DateTime fromDate, DateTime toDate);    
+        List<ChallengeResult> GetRank(DateTime fromDate, DateTime toDate);    
     }
 }

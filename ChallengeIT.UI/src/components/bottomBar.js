@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import * as api from '../apiCaller';
+
 
 class BottomBar extends Component {
   render() {

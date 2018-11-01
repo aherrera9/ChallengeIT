@@ -10,7 +10,7 @@ namespace ChallengeIT.Data.Contracts
     class DbConnection
     {
         public SqlConnection GetDbConnection()
-        {
+        {            
             string connectionString;
             SqlConnection connection;
 

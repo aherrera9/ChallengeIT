@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import * as api from '../apiCaller';
 import BottomBar from './bottomBar';
+import { connect } from "react-redux";
+import * as challengeActions from '../actions/challengeActionCreator';
+
 
 class ChallengeUserPanel extends Component {
+  constructor(props){
+    super(props);
+    this.state={}
+  }
   render() { 
+    if(!this.props.currentUser){
+      return <Redirect to="/" />
+    }
+    if(this.state.redirect){
+      return <Redirect to="/wait" />
+    }
     return (
       <div className="col-12">
         <h2>You are about to challenge: </h2>
-        <h1 className="challengeUserName">{this.props.name}</h1>
+        <h1 className="challengeUserName">{this.props.challengedUser.name}</h1>
+        <h2>To play </h2>
+         <h1 className="challengeUserName">{this.props.category.name}</h1> 
+        <h2>Are you ready? </h2>
           <BottomBar>
             <div className="row">
             <div className="col-6">
@@ -25,7 +41,21 @@ class ChallengeUserPanel extends Component {
     );
   }
 
-  challengePlayer() {}
+  async challengePlayer() {
+    let challenge = await api.challengePlayer()
+    this.props.setCurrentChallenge(challenge.data);
+    this.setState({redirect: true});
+  }
 }
 
-export default ChallengeUserPanel;
+const mapDispatchToProps = () => ({
+  setCurrentChallenge : challengeActions.setCurrentChallenge
+});
+
+const mapStateToProps = (state) => ({
+  currentUser: state.users.currentUser,
+  challengedUser: state.users.challengedUser,
+  category: state.category.value
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChallengeUserPanel);

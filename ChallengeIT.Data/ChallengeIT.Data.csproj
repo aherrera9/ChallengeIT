@@ -44,12 +44,18 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Contracts\DbConnection.cs" />
     <Compile Include="Contracts\ICategoryData.cs" />
+    <Compile Include="Contracts\IPlayerChallengeData.cs" />
     <Compile Include="Contracts\IRankData.cs" />
     <Compile Include="Contracts\IPlayerData.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\ChallengeResult.cs" />
+    <Compile Include="Models\PlayerChallenge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CategoryData.cs" />
+    <Compile Include="Services\PlayerChallengeData.cs" />
+    <Compile Include="Services\PlayerData.cs" />
+    <Compile Include="Services\RankData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
