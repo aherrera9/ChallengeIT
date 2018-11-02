@@ -19,6 +19,7 @@ namespace ChallengeIT.Api.Controllers
         #region Properties
 
         private readonly IPlayerService _playerService;
+        private readonly IChallengeService _challengeService;
 
         #endregion
         #region Controller
@@ -26,9 +27,10 @@ namespace ChallengeIT.Api.Controllers
         /// <summary>
         /// The controller for the class
         /// </summary>
-        public PlayerController(IPlayerService playerService)
+        public PlayerController(IPlayerService playerService, IChallengeService challengeService)
         {
             _playerService = playerService;
+            _challengeService = challengeService;
         }
 
 
@@ -55,6 +57,23 @@ namespace ChallengeIT.Api.Controllers
             }
 
             return Ok(ApiHelper.ResponseWrapper(playerGets));
+        }
+
+        [HttpGet]
+        [Route("{0}/ChallengeStatus")]
+        public async Task<IActionResult> CreateChallenge(int playerId)
+        {
+            var challengeStatus = await _challengeService.GetChallengeStatus(playerId);
+
+            PlayerChallengeStatusGet pcStatus = new PlayerChallengeStatusGet()
+            {
+                ChallengeId = challengeStatus.ChallengeId,
+                ChallengerId = challengeStatus.ChallengerId,
+                OpponentId = challengeStatus.OpponentId,
+                Status = challengeStatus.Status
+            };
+
+            return Ok(ApiHelper.ResponseWrapper(challengeStatus));
         }
 
         #endregion

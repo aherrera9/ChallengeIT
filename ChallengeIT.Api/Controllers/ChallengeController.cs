@@ -35,27 +35,6 @@ namespace ChallengeIT.Api.Controllers
             return Ok(ApiHelper.ResponseWrapper(challengeId));
         }
 
-        [HttpGet]
-        [Route("IsChallengeAccepted")]
-        public async Task<IActionResult> IsChallengeAccepted()
-        {
-            return Ok(ApiHelper.ResponseWrapper(Enums.ChallengeStatus.Waiting));
-        }
-
-        [HttpPost]
-        [Route("SetChallengeResult")]
-        public async Task<IActionResult> SetChallengeResult([FromBody]int result)
-        {
-            return Ok();
-        }
-
-        [HttpPost]
-        [Route("ActionChallenge")]
-        public async Task<IActionResult> ActionChallenge([FromBody]int action)
-        {
-            return Ok();
-        }
-
         #endregion
     }
 }
