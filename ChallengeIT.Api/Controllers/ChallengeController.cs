@@ -27,6 +27,13 @@ namespace ChallengeIT.Api.Controllers
         #endregion
         #region Methods
 
+        [HttpPost]
+        [Route("CreateChallenge")]
+        public async Task<IActionResult> CreateChallenge([FromBody]int categoryId, [FromBody]int challengerId, [FromBody]int opponentId)
+        {
+            return Ok();
+        }
+
         [HttpGet]
         [Route("IsChallengeAccepted")]
         public async Task<IActionResult> IsChallengeAccepted()
