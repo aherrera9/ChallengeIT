@@ -33,6 +33,7 @@ namespace ChallengeIT.Services.Services
             int challengeId = await Task.Run(() => _ChallengeData.NewChallenge(challengerId, opponentId, categoryId));
 
             // send email
+            Email.SendEmail();
 
             return challengeId;
         }
