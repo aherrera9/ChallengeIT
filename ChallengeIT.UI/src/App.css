@@ -78,6 +78,15 @@ h2{
   margin-top: 1em;
 }
 
+.finalQuestion{
+  font-size: 40px;
+  margin-top: 15px;
+}
+.finalQuestion-2{
+  font-size: 40px;
+  margin-top: 25px;
+}
+
 .button-main {
   width: 100%;
   background-color: #f9ff1a;

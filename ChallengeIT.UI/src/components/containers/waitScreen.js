@@ -42,15 +42,20 @@ class WaitScreen extends Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(()=> this.getChallenge(), 1000);
+    //this.timer = setInterval(()=> this.getChallenge(), 1000);
+    setTimeout(() => {
+      this.setState({challengeAccepted: true});
+  }, 15000);
   }
 
-  getChallenge(){
-    let challengeRes = api.getChallengeByUser(this.props.currentUser.id);
-    let challenge = challengeRes.data.data;
-    if(challenge.status === CHALLENGE_STATUS.ACCEPTED){
-      this.setState({challengeAccepted: true})
-    }
+  async getChallenge(){
+    // let challengeRes = await api.getChallengeByUser(this.props.currentUser.id);
+    // let challenge = challengeRes.data.data;
+    // if(challenge.status === CHALLENGE_STATUS.ACCEPTED){
+    //   this.setState({challengeAccepted: true});
+    //   this.timer=null;
+    // }
+    
   }
   
 }

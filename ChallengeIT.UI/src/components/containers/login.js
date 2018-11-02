@@ -65,10 +65,10 @@ class Login extends Component {
     this.props.setCurrentUser(user);
     const activeChallengeResponse = await api.getChallengeByUser(user.id);
     const challenge = activeChallengeResponse.data.data;
-    if(challenge.id !== 0){
+    if(challenge.challengeId !== 0){
       this.props.setCurrentChallenge(activeChallengeResponse.data.data);
       if(challenge.status === CHALLENGE_STATUS.WAITING)
-        return this.setState({hasWaitingChallenge:true})
+      return this.setState({hasWaitingChallenge:true})
       if(challenge.status === CHALLENGE_STATUS.ACCEPTED)
         return this.setState({hasActiveChallenge:true})
     }

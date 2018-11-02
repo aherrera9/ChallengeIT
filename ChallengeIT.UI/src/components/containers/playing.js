@@ -12,7 +12,7 @@ import * as challengeActions from "../../actions/challengeActionCreator";
 class PlayingScreen extends Component {
   constructor(props){
     super(props);
-    this.state = {challengeCanceled: false};
+    this.state = {challengeCanceled: false, showConfirmation:true};
   }
   render() {
     let styles = {
@@ -22,10 +22,9 @@ class PlayingScreen extends Component {
       <div >
         {this.state.challengeCanceled && <Redirect to="/"/>}
         {this.state.changeFinished && <Redirect to="/"/>}
-        {this.state.finishChallenge && this.showConfirmation()}
         {this.state.userWon && this.showFinalMsg(true)}
         {this.state.userLost && this.showFinalMsg()}
-        {this.state.finishChallenge && this.showConfirmation()}
+        {this.state.finishChallenge && this.state.showConfirmation && this.showConfirmation()}
         {!this.state.finishChallenge && this.renderPlayingDialog()}
         
       </div>
@@ -33,11 +32,11 @@ class PlayingScreen extends Component {
   }
 
   markChallengeWin(){
-    this.setState({userWon:true});
+    this.setState({userWon:true, showConfirmation:false});
   }
 
   markChallengeLost(){
-    this.setState({userLost:true});
+    this.setState({userLost:true, showConfirmation: false});
   }
 
   showFinalMsg(won){
@@ -78,9 +77,8 @@ class PlayingScreen extends Component {
 
   showConfirmation(){
     return <React.Fragment>
-    <h1 className="waitingMsg"> We hope you enjoyed your challenge!</h1>
-    <h1 className="waitingMsg"> How did it go?</h1>
-        <img src={playImg} alt="Waiting" className="waitingImg"/>
+    <h1 className="finalQuestion"> We hope you enjoyed your challenge!</h1>
+    <h1 className="finalQuestion-2"> How did it go?</h1>
         <BottomBar>
         <div className="row">
           <div className="col-6">

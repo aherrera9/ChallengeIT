@@ -43,8 +43,8 @@ class ChallengeUserPanel extends Component {
   }
 
   async challengePlayer() {
-    let challenge = await api.challengePlayer(this.props.currentUser.id, this.props.challengedUser.id, this.props.category.id )
-    this.props.setCurrentChallenge(challenge.data);
+   // let challenge = await api.challengePlayer(this.props.currentUser.id, this.props.challengedUser.id, this.props.category.id )
+    //this.props.setCurrentChallenge(challenge.data);
     this.setState({redirect: true});
   }
 }
