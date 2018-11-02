@@ -4,6 +4,7 @@ import ChallengeUserPanel from "../challengeUserPanel";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as userActions from "../../actions/userActionCreator";
+import { CHALLENGE_STATUS } from "../../constants/challengeStatus";
 
 class Login extends Component {
   constructor(props) {
@@ -13,7 +14,13 @@ class Login extends Component {
   }
 
   render() {
-    const user = this.state.selectedUser;
+    const user = this.state.selectedUser;       
+    if(this.state.hasActiveChallenge){
+      return <Redirect to="/playing" />
+    }
+    if(this.state.hasWaitingChallenge){
+      return <Redirect to="/playing" />
+    }
     return (
       <div className="col-12">
         {this.state.redirect && <Redirect to="/categories" />}
@@ -50,9 +57,17 @@ class Login extends Component {
     );
   }
 
-  selectUser(user) {
+  async selectUser(user) {
     this.props.setCurrentUser(user);
-    this.setState({redirect: true});
+    const activeChallengeResponse = await api.getChallengeByUser(this.props.currentUser.id);
+    const challenge = activeChallengeResponse.data.data;
+    if(challenge.id !== 0){
+      this.props.setCurrentChallenge(activeChallengeResponse.data.data);
+      if(challenge.status === CHALLENGE_STATUS.WAITING)
+        return this.setState({hasWaitingChallenge:true})
+      if(challenge.status === CHALLENGE_STATUS.ACCEPTED)
+        return this.setState({hasActiveChallenge:true})
+    }
   }
 
   handleUserInput(e) {

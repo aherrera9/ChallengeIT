@@ -4,6 +4,7 @@ import * as api from '../apiCaller';
 import BottomBar from './bottomBar';
 import { connect } from "react-redux";
 import * as challengeActions from '../actions/challengeActionCreator';
+import * as userActions from '../actions/userActionCreator';
 
 
 class ChallengeUserPanel extends Component {
@@ -42,7 +43,7 @@ class ChallengeUserPanel extends Component {
   }
 
   async challengePlayer() {
-    let challenge = await api.challengePlayer()
+    let challenge = await api.challengePlayer(this.props.currentUser.id, this.props.challengedUser.id, this.props.category.id )
     this.props.setCurrentChallenge(challenge.data);
     this.setState({redirect: true});
   }
