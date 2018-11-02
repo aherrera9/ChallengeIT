@@ -14,5 +14,6 @@ namespace ChallengeIT.Data.Models
         public string OpponentName { get; set; }
         public int Result { get; set; }
         public int CategoryId { get; set; }
+        public int WinnerPlayerId { get; set; }
     }
 }

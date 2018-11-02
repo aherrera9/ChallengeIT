@@ -6,6 +6,7 @@ namespace ChallengeIT.Services.Contracts
 {
     public interface IChallengeService
     {
-        Task<bool> GetIsChallengeAccepted(int challengeId);
+        Task<int> CreateChallenge(int catagoryId, int challengerId, int opponentId);
+        Task<PlayerChallengeStatusGet> GetChallengeStatus(int playerId);
     }
 }

@@ -13,5 +13,7 @@ namespace ChallengeIT.Data.Contracts
         void UpdateChallenge(int challengeId, int challengeResponse);
         void CancelChallenge(int challengeId);
         PlayerChallenge GetChallenge(int challengeId);
+
+        PendingChallenge GetPendingChallengeByUser(int playerId);
     }
 }
