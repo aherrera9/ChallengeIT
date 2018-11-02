@@ -9,7 +9,7 @@ using ChallengeIT.Api.Models;
 namespace ChallengeIT.Api.Controllers
 {
     [EnableCors("AllowAll")]
-    [Route("api/[controller]/{0}/")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ChallengeController : ControllerBase
     {
