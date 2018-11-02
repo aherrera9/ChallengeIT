@@ -25,13 +25,21 @@ namespace ChallengeIT.Data.Services
                 command.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = toDate;
                 SqlDataReader dataReader;
                 dataReader = command.ExecuteReader();
-                while (dataReader.Read())
+                if (dataReader.HasRows)
                 {
-                    challengeResults.Add(new ChallengeResult
-                    { ChallengingPlayerId = (int)dataReader.GetValue(0), ChallengerName = (string)dataReader.GetValue(1),
-                        OpponentPlayerId = (int)dataReader.GetValue(2), OpponentName = (string)dataReader.GetValue(3),
-                        Result = (int)dataReader.GetValue(4), CategoryId = (int)dataReader.GetValue(5), WinnerPlayerId = (int)dataReader.GetValue(6)
-                    });
+                    while (dataReader.Read())
+                    {
+                        challengeResults.Add(new ChallengeResult
+                        {
+                            ChallengingPlayerId = (int)dataReader.GetValue(0),
+                            ChallengerName = (string)dataReader.GetValue(1),
+                            OpponentPlayerId = (int)dataReader.GetValue(2),
+                            OpponentName = (string)dataReader.GetValue(3),
+                            Result = (int)dataReader.GetValue(4),
+                            CategoryId = (int)dataReader.GetValue(5),
+                            WinnerPlayerId = (int)dataReader.GetValue(6)
+                        });
+                    }
                 }
                 dataReader.Close();
             }            

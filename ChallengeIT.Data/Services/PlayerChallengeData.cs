@@ -39,8 +39,15 @@ namespace ChallengeIT.Data.Services
                 SqlDataReader dataReader;
                 command.Parameters.Add("@ChallengeId", SqlDbType.Int).Value = challengeId;
                 dataReader = command.ExecuteReader();
-                dataReader.Read();
-                challenge = new PlayerChallenge { ChallengingPlayerId = (int)dataReader.GetValue(0), OpponentPlayerId = (int)dataReader.GetValue(1), ChallengeDate = (DateTime)dataReader.GetValue(2), ChallengeStatus = (int)dataReader.GetValue(3) };
+                if (dataReader.HasRows)
+                {
+                    dataReader.Read();
+                    challenge = new PlayerChallenge { ChallengingPlayerId = (int)dataReader.GetValue(0), OpponentPlayerId = (int)dataReader.GetValue(1), ChallengeDate = (DateTime)dataReader.GetValue(2), ChallengeStatus = (int)dataReader.GetValue(3) };
+                }
+                else
+                {
+                    challenge = new PlayerChallenge();
+                }
                 dataReader.Close();
             }
             conn.Close();
@@ -59,8 +66,15 @@ namespace ChallengeIT.Data.Services
                 SqlDataReader dataReader;
                 command.Parameters.Add("@PlayerId", SqlDbType.Int).Value = playerId;
                 dataReader = command.ExecuteReader();
-                dataReader.Read();
-                pendingChallenge = new PendingChallenge {ChallengeId = (int)dataReader.GetValue(0), ChallengingPlayerId = (int)dataReader.GetValue(1), OpponentPlayerId = (int)dataReader.GetValue(2) };
+                if (dataReader.HasRows)
+                {
+                    dataReader.Read();
+                    pendingChallenge = new PendingChallenge { ChallengeId = (int)dataReader.GetValue(0), ChallengingPlayerId = (int)dataReader.GetValue(1), OpponentPlayerId = (int)dataReader.GetValue(2) };
+                }
+                else
+                {
+                    pendingChallenge = new PendingChallenge();
+                }
                 dataReader.Close();
             }
             conn.Close();
@@ -84,8 +98,15 @@ namespace ChallengeIT.Data.Services
                 command.Parameters.Add("@OpponentPlayerId", SqlDbType.Int).Value = opponentPlayerId;
                 command.Parameters.Add("@CategoryId", SqlDbType.Int).Value = categoryId;
                 dataReader = command.ExecuteReader();
-                dataReader.Read();
-                challengeId = (int)dataReader.GetValue(0);
+                if (dataReader.HasRows)
+                {
+                    dataReader.Read();
+                    challengeId = (int)dataReader.GetValue(0);
+                }
+                else
+                {
+                    challengeId = 0;
+                }
                 dataReader.Close();
             }
             conn.Close();

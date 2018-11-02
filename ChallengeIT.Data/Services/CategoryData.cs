@@ -22,10 +22,14 @@ namespace ChallengeIT.Data.Services
             {
                 SqlDataReader dataReader;
                 dataReader = command.ExecuteReader();
-                while (dataReader.Read())
+                if (dataReader.HasRows)
                 {
-                    categories.Add(new Category { Id = (int)dataReader.GetValue(0), Description = (string)dataReader.GetValue(1) });
+                    while (dataReader.Read())
+                    {
+                        categories.Add(new Category { Id = (int)dataReader.GetValue(0), Description = (string)dataReader.GetValue(1) });
+                    }
                 }
+                
                 dataReader.Close();
             }
             conn.Close();

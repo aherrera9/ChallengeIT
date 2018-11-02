@@ -24,8 +24,15 @@ namespace ChallengeIT.Data.Services
                 command.Parameters.Add("@PlayerId", SqlDbType.Int).Value = playerId;
                 SqlDataReader dataReader;
                 dataReader = command.ExecuteReader();
-                dataReader.Read();
-                player = new Player() { Name = (string)dataReader.GetValue(0), Email = (string)dataReader.GetValue(1) };
+                if (dataReader.HasRows)
+                {
+                    dataReader.Read();
+                    player = new Player() { Name = (string)dataReader.GetValue(0), Email = (string)dataReader.GetValue(1) };
+                }
+                else
+                {
+                    player = new Player();
+                }
                 dataReader.Close();
             }
             conn.Close();
@@ -44,9 +51,12 @@ namespace ChallengeIT.Data.Services
             {
                 SqlDataReader dataReader;
                 dataReader = command.ExecuteReader();
-                while (dataReader.Read())
+                if (dataReader.HasRows)
                 {
-                    players.Add(new Player { Id = (int)dataReader.GetValue(0), Name = (string)dataReader.GetValue(1) });
+                    while (dataReader.Read())
+                    {
+                        players.Add(new Player { Id = (int)dataReader.GetValue(0), Name = (string)dataReader.GetValue(1) });
+                    }
                 }
                 dataReader.Close();
             }
