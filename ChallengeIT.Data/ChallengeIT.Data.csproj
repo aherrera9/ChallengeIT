@@ -48,6 +48,7 @@
     <Compile Include="Contracts\IRankData.cs" />
     <Compile Include="Contracts\IPlayerData.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\PendingChallenge.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\ChallengeResult.cs" />
     <Compile Include="Models\PlayerChallenge.cs" />

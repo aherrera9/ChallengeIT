@@ -48,6 +48,26 @@ namespace ChallengeIT.Data.Services
             return challenge;
         }
 
+        public PendingChallenge GetPendingChallengeByUser(int playerId)
+        {
+            DbConnection connection = new DbConnection();
+            PendingChallenge pendingChallenge;
+            SqlConnection conn = connection.GetDbConnection();
+            conn.Open();
+            using (SqlCommand command = new SqlCommand("PendingChallengeByUser", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+            {
+                SqlDataReader dataReader;
+                command.Parameters.Add("@PlayerId", SqlDbType.Int).Value = playerId;
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                pendingChallenge = new PendingChallenge {ChallengeId = (int)dataReader.GetValue(0), ChallengingPlayerId = (int)dataReader.GetValue(1), OpponentPlayerId = (int)dataReader.GetValue(2) };
+                dataReader.Close();
+            }
+            conn.Close();
+            conn.Dispose();
+            return pendingChallenge;
+        }
+
         public int NewChallenge(int challengingPlayerId, int opponentPlayerId, int categoryId)
         {
             DbConnection connection = new DbConnection();
