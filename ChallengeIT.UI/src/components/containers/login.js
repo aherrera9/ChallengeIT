@@ -4,6 +4,7 @@ import ChallengeUserPanel from "../challengeUserPanel";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as userActions from "../../actions/userActionCreator";
+import * as challengeActions from "../../actions/challengeActionCreator";
 import { CHALLENGE_STATUS } from "../../constants/challengeStatus";
 
 class Login extends Component {
@@ -17,6 +18,9 @@ class Login extends Component {
     const user = this.state.selectedUser;       
     if(this.state.hasActiveChallenge){
       return <Redirect to="/playing" />
+    }
+    if(this.state.redirectToCategoires){
+      return <Redirect to="/categories" />
     }
     if(this.state.hasWaitingChallenge){
       return <Redirect to="/playing" />
@@ -59,7 +63,7 @@ class Login extends Component {
 
   async selectUser(user) {
     this.props.setCurrentUser(user);
-    const activeChallengeResponse = await api.getChallengeByUser(this.props.currentUser.id);
+    const activeChallengeResponse = await api.getChallengeByUser(user.id);
     const challenge = activeChallengeResponse.data.data;
     if(challenge.id !== 0){
       this.props.setCurrentChallenge(activeChallengeResponse.data.data);
@@ -68,6 +72,7 @@ class Login extends Component {
       if(challenge.status === CHALLENGE_STATUS.ACCEPTED)
         return this.setState({hasActiveChallenge:true})
     }
+    return this.setState({redirectToCategoires: true})
   }
 
   handleUserInput(e) {
@@ -94,7 +99,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  setCurrentUser: userActions.setCurrentUser
+  setCurrentUser: userActions.setCurrentUser,
+  setCurrentChallenge: challengeActions.setCurrentChallenge
 };
 
 export default connect(

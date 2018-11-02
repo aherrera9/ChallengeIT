@@ -11,11 +11,11 @@ export async function getUsers() {
 }
 
 export async function getRanking(categoryId) {
-    return axios.get(`${SERVER_URL}rank?categoryId=${categoryId}`);
+    return axios.get(`${SERVER_URL}/rank?categoryId=${categoryId}`);
 }
 
 export async function getChallengeByUser(userId) {
-    return axios.get(`${SERVER_URL}challenge/byUser/${userId}`);
+    return axios.get(`${SERVER_URL}/player/${userId}/challengestatus`);
 }
 
 export async function setChallengeResult(challengeId, userSender, result) {
@@ -34,7 +34,7 @@ export async function challengePlayer(currentUserId, challengerId, categoryId) {
         challengerId: currentUserId,
         opponentId: challengerId
     }
-    return axios.post(`${SERVER_URL}CreateChallenge`, postData );
+    return axios.post(`${SERVER_URL}/challenge/createchallenge`, postData );
 };
 
 export async function cancelChallenge(challengeId) {

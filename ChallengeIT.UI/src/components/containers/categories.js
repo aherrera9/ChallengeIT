@@ -15,6 +15,9 @@ class Categories extends Component {
     if (!this.props.currentUser || this.state.goBack) {
       return <Redirect to="/" />;
     } 
+    if (this.state.redirect) {
+      return <Redirect to="/challenges" />;
+    } 
     return (
       <div className="col-12">
         <h1>
