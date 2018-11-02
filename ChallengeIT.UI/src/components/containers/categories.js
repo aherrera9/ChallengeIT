@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import * as api from "../../apiCaller";
 import { connect } from "react-redux";
 import BottomBar from "../bottomBar";
 import * as categoriesActions from "../../actions/categoriesActionCreator";
+import * as challengeActions from "../../actions/challengeActionCreator";
 
 class Categories extends Component {
   constructor(props) {
@@ -13,11 +14,7 @@ class Categories extends Component {
   render() {
     if (!this.props.currentUser || this.state.goBack) {
       return <Redirect to="/" />;
-    }
-    
-    if(this.state.redirect){
-      return <Redirect to="/challenges" />
-    }
+    } 
     return (
       <div className="col-12">
         <h1>
@@ -36,12 +33,14 @@ class Categories extends Component {
           <BottomBar>
             <div className="row">
               <div className="col-6">
-                <button
-                  className="btn btn-secondary button-secondary"
-                  onClick={this.goBack.bind(this)}
-                >
-                  Go Back
-                </button>
+                <Link to="/">
+                  <button
+                    className="btn btn-secondary button-secondary"
+                    onClick={this.goBack.bind(this)}
+                  >
+                    Go Back
+                  </button>
+                </Link>
               </div>
             </div>
           </BottomBar>
@@ -54,9 +53,10 @@ class Categories extends Component {
   }
 
   async componentDidMount() {
-    const categories = await api.getChallengeCategories();
+    const categories = await api.getChallengeCategories();    
     this.setState({ categories: categories.data.data });
   }
+
   goBack() {
     this.setState({ goBack: true });
   }
@@ -69,7 +69,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  setCurrentCategory: categoriesActions.setCurrentCategory
+  setCurrentCategory: categoriesActions.setCurrentCategory,
+  setPollTimer: challengeActions.setPollTimer,
+  setCurrentChallenge: challengeActions.setCurrentChallenge
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
