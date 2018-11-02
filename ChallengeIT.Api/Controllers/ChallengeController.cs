@@ -17,6 +17,14 @@ namespace ChallengeIT.Api.Controllers
         private readonly IChallengeService _challengeService;
 
         #endregion
+        #region Controller
+
+        public ChallengeController(IChallengeService challengeService)
+        {
+            _challengeService = challengeService;
+        }
+
+        #endregion
         #region Methods
 
         [HttpGet]

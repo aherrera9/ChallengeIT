@@ -37,13 +37,13 @@ namespace ChallengeIT.Api
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-
             services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
             services.AddTransient(typeof(ICategoryData), typeof(CategoryData));
             services.AddTransient(typeof(IPlayerService), typeof(PlayerService));
             services.AddTransient(typeof(IPlayerData), typeof(PlayerData));
             services.AddTransient(typeof(IRankService), typeof(RankService));
             services.AddTransient(typeof(IChallengeService), typeof(ChallengeService));
+            services.AddTransient(typeof(IPlayerChallengeData), typeof(PlayerChallengeData));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

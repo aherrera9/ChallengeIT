@@ -28,7 +28,7 @@ namespace ChallengeIT.Api.Controllers
         /// </summary>
         /// <returns>A list of player ranks</returns>
         [HttpGet]
-        public async Task<IActionResult> Get(int categoryId, RankDateRange rankDateRange)
+        public async Task<IActionResult> Get(int categoryId, RankDateRange rankDateRange = RankDateRange.Day)
         {
             var ranks = await _rankService.GetRanks(rankDateRange);
 
