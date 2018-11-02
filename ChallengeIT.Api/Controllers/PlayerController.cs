@@ -60,8 +60,8 @@ namespace ChallengeIT.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{0}/ChallengeStatus")]
-        public async Task<IActionResult> CreateChallenge(int playerId)
+        [Route("{playerId}/ChallengeStatus")]
+        public async Task<IActionResult> ChallengeStatus(int playerId)
         {
             var challengeStatus = await _challengeService.GetChallengeStatus(playerId);
 
