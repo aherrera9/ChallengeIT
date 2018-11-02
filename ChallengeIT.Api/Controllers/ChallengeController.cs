@@ -31,7 +31,8 @@ namespace ChallengeIT.Api.Controllers
         [Route("CreateChallenge")]
         public async Task<IActionResult> CreateChallenge([FromBody]int categoryId, [FromBody]int challengerId, [FromBody]int opponentId)
         {
-            return Ok();
+            var challengeId = await _challengeService.CreateChallenge(categoryId, challengerId, opponentId);
+            return Ok(ApiHelper.ResponseWrapper(challengeId));
         }
 
         [HttpGet]
